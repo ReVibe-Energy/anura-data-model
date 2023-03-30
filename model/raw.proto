@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package model;
+
+import "commons.proto";
+
+message RawAccelerationData {
+  float sample_rate = 1;
+  uint32 sample_count = 2;
+  repeated float acceleration_x = 3;
+  repeated float acceleration_y = 4;
+  repeated float acceleration_z = 5;
+}
+
+message ScheduledRawMeasurement {
+  Origin origin = 1;
+  Snapshot snapshot = 2;
+  RawAccelerationData acceleration_data = 3;
+}

@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package model;
+
+import "commons.proto";
+
+// TODO define values
+// TODO decide: split into groups e.g. RMS, FFT, ...
+
+message AggregatedValues {
+  float acceleration_x_peak = 1;
+  float acceleration_y_peak = 2;
+  float acceleration_z_peak = 3;
+  float acceleration_x_rms = 4;
+  float acceleration_y_rms = 5;
+  float acceleration_z_rms = 6;
+}
+
+// vs
+
+message AccelerationPeak {
+  float x = 1;
+  float y = 2;
+  float z = 3;
+}
+
+message AccelerationRms {
+  float x = 1;
+  float y = 2;
+  float z = 3;
+}
+
+// vs
+
+message AxisAccelerations {
+  string unit = 4;
+  float x = 1;
+  float y = 2;
+  float z = 3;
+}
+
+// with usage
+//  AxisAccelerations acc_peaks
+//  AxisAccelerations acc_rms
+
+//
+
+message Values {
+  string unit = 4;
+  float x = 1;
+  float y = 2;
+  float z = 3;
+}
+
+//
+
+message AggregatedMeasurement {
+  Origin origin = 1;
+  Snapshot snapshot = 2;
+  AggregatedValues aggregated_values = 3;
+}

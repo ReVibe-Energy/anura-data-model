@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package model;
+
+import "google/protobuf/timestamp.proto";
+
+enum Axis {
+  AXIS_UNSPECIFIED = 0;
+  AXIS_X = 1;
+  AXIS_Y = 2;
+  AXIS_Z = 3;
+}
+
+enum Plane {
+  PLANE_UNSPECIFIED = 0;
+  PLANE_XY = 1;
+  PLANE_YZ = 2;
+  PLANE_XZ = 3;
+}
+
+message Origin {
+  string gateway_id = 1;
+  string node_id = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  uint32 accuracy_micros = 4; // FIXME define units
+}
+
+// TODO check if not better using a standard type like uuid
+message Snapshot {
+  string id = 1;
+}
