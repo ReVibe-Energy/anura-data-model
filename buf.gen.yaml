@@ -4,7 +4,5 @@ managed:
   enabled: true
 
 plugins:
-  - plugin: python
-    out: generated/proto/python
   - plugin: python_betterproto
-    out: generated/proto/python_betterproto
+    out: generated/proto/
