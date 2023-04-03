@@ -22,10 +22,9 @@ message Origin {
   string gateway_id = 1;
   string node_id = 2;
   google.protobuf.Timestamp timestamp = 3;
-  uint32 accuracy_micros = 4; // FIXME define units
+  bool is_synced = 4;
 }
 
-// TODO check if not better using a standard type like uuid
 message Snapshot {
   string id = 1;
 }
