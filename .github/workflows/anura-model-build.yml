@@ -29,9 +29,13 @@ jobs:
           role-to-assume: ${{ secrets.OIDC_ROLE_AWS_ROLE_TO_ASSUME }}
           aws-region: ${{ secrets.OIDC_ROLE_AWS_REGION }}
 
-      - name: Use CodeArtifact for pip dependencies
+      - name: Configure pip to use CodeArtifact dependencies
         run: |
           aws codeartifact login --tool pip --domain revibe-energy --repository revibe-repo
+
+      - name: Configure twine to use CodeArtifact dependencies
+        run: |
+          aws codeartifact login --tool twine --domain revibe-energy --repository revibe-repo
 
       - name: Install betterproto
         run: |
