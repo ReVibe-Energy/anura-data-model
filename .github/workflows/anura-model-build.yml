@@ -51,3 +51,9 @@ jobs:
           echo "Directory contents:"
           ls -l
           buf generate model
+
+      - name: Package the generated files as a Python distribution
+        run: |
+          pyton -m build
+          twine upload --repository revibe-repo dist/*
+        working-directory: ${{ env.working-directory }}./generated
