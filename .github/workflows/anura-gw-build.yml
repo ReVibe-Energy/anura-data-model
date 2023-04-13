@@ -38,3 +38,4 @@ jobs:
       - name: Generate Python implementation
         run: |
           buf generate model
+
