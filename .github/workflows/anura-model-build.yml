@@ -54,6 +54,6 @@ jobs:
 
       - name: Package the generated files as a Python distribution
         run: |
-          python -m build
+          python -m anuradatamodel
           twine upload --repository revibe-repo dist/*
         working-directory: ${{ env.working-directory }}./generated
