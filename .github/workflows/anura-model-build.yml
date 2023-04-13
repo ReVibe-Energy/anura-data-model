@@ -21,6 +21,7 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.9'
+          cache: 'pip'
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1-node16
@@ -30,7 +31,7 @@ jobs:
 
       - name: Use CodeArtifact for pip dependencies
         run: |
-          aws codeartifact login --tool pip --domain revibe-energy --domain-owner 115273158856 --repository revibe-repo
+          aws codeartifact login --tool pip --domain revibe-energy --repository revibe-repo
 
       - name: Install betterproto
         run: |
