@@ -33,15 +33,9 @@ jobs:
         run: |
           aws codeartifact login --tool pip --domain revibe-energy --repository revibe-repo
 
-      - name: Install betterproto
-        run: |
-          pip install betterproto[compiler]
-
-#      - name: Install protoc
-#        uses: arduino/setup-protoc@v1
-#        with:
-#          version: '3.x'
-#          repo-token: ${{ secrets.GITHUB_TOKEN }}
+#      - name: Install betterproto
+#        run: |
+#          pip install betterproto[compiler]
 
       - name: Install buf tooling
         uses: bufbuild/buf-setup-action@v1.17.0
