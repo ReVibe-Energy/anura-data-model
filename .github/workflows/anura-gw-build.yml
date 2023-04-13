@@ -45,8 +45,10 @@ jobs:
       - name: Install buf tooling
         uses: bufbuild/buf-setup-action@v1.17.0
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate Python implementation
         run: |
+          echo "Directory contents:"
+          ls -l
           buf generate model
