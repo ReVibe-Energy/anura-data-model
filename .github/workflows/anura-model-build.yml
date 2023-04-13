@@ -1,4 +1,4 @@
-name: Anura Gateway reusable workflow
+name: Anura Data Model workflow
 
 on:
   workflow_dispatch:
