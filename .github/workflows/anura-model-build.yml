@@ -54,6 +54,6 @@ jobs:
 
       - name: Package the generated files as a Python distribution
         run: |
-          pyton -m build
+          python -m build
           twine upload --repository revibe-repo dist/*
         working-directory: ${{ env.working-directory }}./generated
