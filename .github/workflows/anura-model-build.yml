@@ -33,9 +33,9 @@ jobs:
         run: |
           aws codeartifact login --tool pip --domain revibe-energy --repository revibe-repo
 
-#      - name: Install betterproto
-#        run: |
-#          pip install betterproto[compiler]
+      - name: Install betterproto
+        run: |
+          pip install betterproto[compiler]
 
       - name: Install buf tooling
         uses: bufbuild/buf-setup-action@v1.17.0
