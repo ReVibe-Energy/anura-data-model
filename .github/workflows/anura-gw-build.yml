@@ -35,7 +35,6 @@ jobs:
 
       - name: Install buf tooling
         uses: bufbuild/buf-setup-action@v1.17.0
-        run: buf --version
 
       - name: Generate Python implementation
         run: |
