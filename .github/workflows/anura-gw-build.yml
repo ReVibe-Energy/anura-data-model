@@ -34,7 +34,7 @@ jobs:
 
       - name: Install betterproto
         run: |
-          pip install betterproto
+          pip install betterproto[compiler]
 
       - name: Install protoc
         uses: arduino/setup-protoc@v1
@@ -45,7 +45,7 @@ jobs:
       - name: Install buf tooling
         uses: bufbuild/buf-setup-action@v1.17.0
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate Python implementation
         run: |
