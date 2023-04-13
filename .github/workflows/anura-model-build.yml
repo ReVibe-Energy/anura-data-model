@@ -54,6 +54,6 @@ jobs:
 
       - name: Package the generated files as a Python distribution
         run: |
-          python3 setup.py bdist_wheel
+          python3 setup.py bdist_wheel 
           twine upload --repository revibe-repo dist/*
 #        working-directory: ${{ env.working-directory }}./generated
