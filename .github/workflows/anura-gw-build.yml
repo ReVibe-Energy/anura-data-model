@@ -32,6 +32,10 @@ jobs:
         run: |
           aws codeartifact login --tool pip --domain revibe-energy --domain-owner 115273158856 --repository revibe-repo
 
+      - name: Install betterproto
+        run: |
+          pip install betterproto
+
       - name: Install buf tooling
         uses: bufbuild/buf-setup-action@v1.17.0
 
