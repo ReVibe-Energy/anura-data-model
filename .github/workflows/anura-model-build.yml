@@ -52,8 +52,11 @@ jobs:
           ls -l
           buf generate model
 
+      - name: Install build tools
+        run: |
+          pip install poetry
       - name: Package the generated files as a Python distribution
         run: |
-          python3 setup.py bdist_wheel 
+          poetry build 
           twine upload --repository revibe-repo dist/*
 #        working-directory: ${{ env.working-directory }}./generated
