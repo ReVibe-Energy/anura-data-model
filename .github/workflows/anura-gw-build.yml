@@ -30,7 +30,7 @@ jobs:
 
       - name: Use CodeArtifact for pip dependencies
         run: |
-          aws codeartifact login --tool pip --domain revibe-energy  --repository revibe-repo
+          aws codeartifact login --tool pip --domain revibe-energy --domain-owner 115273158856 --repository revibe-repo
 
       - name: Install buf tooling
         uses: bufbuild/buf-setup-action@v1.17.0
