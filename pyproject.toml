@@ -11,5 +11,5 @@ python = "^3.9"
 
 
 [build-system]
-requires = ["poetry-core","twine==4.0.2"]
+requires = ["poetry-core","twine==4.0.2", "betterproto[compiler]==1.2.5"]
 build-backend = "poetry.core.masonry.api"

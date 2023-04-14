@@ -38,7 +38,11 @@ jobs:
         run: |
           aws codeartifact login --tool twine --domain revibe-energy --repository revibe-repo
 
-      - name: Install betterproto
+#      - name: Install betterproto
+#        run: |
+#          pip install betterproto[compiler]
+
+      - name: Install dependencies
         run: |
           pip install betterproto[compiler]
 
@@ -53,9 +57,9 @@ jobs:
           ls -l
           buf generate model
 
-      - name: Install build tools
-        run: |
-          pip install poetry
+#      - name: Install build tools
+#        run: |
+#          pip install poetry
       - name: Package the generated files as a Python distribution
         run: |
           poetry build 
