@@ -34,10 +34,6 @@ jobs:
         run: |
           aws codeartifact login --tool pip --domain revibe-energy --repository revibe-repo
 
-#      - name: Install betterproto
-#        run: |
-#          pip install betterproto[compiler]
-
       - name: Install Python dependencies
         run: |
           pip install -r requirements.txt
