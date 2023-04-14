@@ -5,4 +5,4 @@ managed:
 
 plugins:
   - plugin: python_betterproto
-    out: generated/anuradatamodel/proto/
+    out: anuradatamodel/generated/proto/
