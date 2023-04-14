@@ -1,10 +1,11 @@
 [tool.poetry]
 name = "anura-data-model"
-version = "0.2.0"
+version = "0.3.0"
 description = "Data model for Anura Protobuf format"
 authors = ["Erik Finnman <erik.finnman@layer10.se>"]
 readme = "README.md"
 packages = [{include = "generated"}]
+include = ["generated/**/*"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
