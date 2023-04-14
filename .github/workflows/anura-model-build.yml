@@ -62,6 +62,9 @@ jobs:
 #          pip install poetry
       - name: Package the generated files as a Python distribution
         run: |
-          poetry build 
-#          twine upload --repository revibe-repo dist/*
+          poetry build
+          echo "Pip config:"
+          cat ~/.config/pip/pip.conf
+          echo "Upload artifact using twine
+          twine upload --repository revibe-repo ./dist/*
 #        working-directory: ${{ env.working-directory }}./generated
