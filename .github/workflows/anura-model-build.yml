@@ -63,6 +63,8 @@ jobs:
       - name: Package the generated files as a Python distribution
         run: |
           poetry build
+          echo "Configure twine"
+          aws codeartifact login --tool twine --domain revibe-energy --repository revibe-repo
           echo "Pip config:"
           cat ~/.config/pip/pip.conf
           echo "Upload artifact using twine"
