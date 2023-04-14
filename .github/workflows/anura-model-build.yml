@@ -68,5 +68,8 @@ jobs:
           echo "Pip config:"
           cat ~/.config/pip/pip.conf
           echo "Upload artifact using twine"
+          export TWINE_USERNAME=aws
+          export TWINE_PASSWORD=`aws codeartifact get-authorization-token --domain revibe-energy --query authorizationToken --output text`
+          export TWINE_REPOSITORY_URL=`aws codeartifact get-repository-endpoint --domain revibe-energy --repository revibe-repo --format pypi --query repositoryEndpoint --output text`
           twine upload --repository revibe-repo ./dist/*
 #        working-directory: ${{ env.working-directory }}./generated
