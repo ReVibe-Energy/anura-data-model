@@ -45,8 +45,6 @@ jobs:
 
       - name: Generate Python implementation
         run: |
-          echo "Directory contents:"
-          ls -l
           buf generate model
 
       - name: Package the generated files as a Python package
