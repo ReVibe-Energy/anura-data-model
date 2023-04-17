@@ -26,3 +26,4 @@ pip install "betterproto[compiler]==2.0.0b5"
 ```
 
 To be evaluated / tested for compatibility when more complex structures and protobuf features are used.
+
