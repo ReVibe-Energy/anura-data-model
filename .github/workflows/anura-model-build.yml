@@ -1,0 +1,59 @@
+name: Anura Data Model workflow
+
+on:
+  workflow_dispatch:
+  push:
+
+concurrency: ${{ github.workflow }} # Do not permit concurrent builds for the same workflow
+
+jobs:
+  generate_model:
+    name: Generate model
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          cache: 'pip'
+          cache-dependency-path: pyproject.toml
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1-node16
+        with:
+          role-to-assume: ${{ secrets.OIDC_ROLE_AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ secrets.OIDC_ROLE_AWS_REGION }}
+
+      - name: Configure pip to use CodeArtifact dependencies
+        run: |
+          aws codeartifact login --tool pip --domain revibe-energy --repository revibe-repo
+
+      - name: Install Python dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Install buf tooling
+        uses: bufbuild/buf-setup-action@v1.17.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate Python implementation
+        run: |
+          buf generate model
+
+      - name: Package the generated files as a Python package
+        run: |
+          poetry build
+
+      - name: Upload the package to CodeArtifact
+        run: |
+          export TWINE_USERNAME=aws
+          export TWINE_PASSWORD=`aws codeartifact get-authorization-token --domain revibe-energy --query authorizationToken --output text`
+          export TWINE_REPOSITORY_URL=`aws codeartifact get-repository-endpoint --domain revibe-energy --repository revibe-repo --format pypi --query repositoryEndpoint --output text`
+          twine upload --repository revibe-repo ./dist/*
