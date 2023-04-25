@@ -6,7 +6,7 @@ on:
     branches:
       - '*'
     tags-ignore:
-      - v1.*
+      - 1.*
 
 concurrency: ${{ github.workflow }} # Do not permit concurrent builds for the same workflow
 
