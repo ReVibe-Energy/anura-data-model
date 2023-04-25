@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "anura-data-model"
-version = "0.9.0"
+version = "1.0.0"
 description = "Data model for Anura Protobuf format"
 authors = ["Erik Finnman <erik.finnman@layer10.se>"]
 readme = "README.md"
@@ -10,7 +10,6 @@ include = ["anuradatamodel/**/*"]
 [tool.poetry.dependencies]
 python = "^3.9"
 betterproto = "2.0.0b5"
-
 
 [build-system]
 requires = ["poetry-core","twine==4.0.2", "betterproto[compiler]==2.0.0b5"]

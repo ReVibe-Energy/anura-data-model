@@ -3,6 +3,8 @@ name: Anura Data Model workflow
 on:
   workflow_dispatch:
   push:
+    tags-ignore:
+      - v1.*
 
 concurrency: ${{ github.workflow }} # Do not permit concurrent builds for the same workflow
 
