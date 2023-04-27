@@ -51,6 +51,13 @@ jobs:
         run: |
           buf generate model
 
+      - name: Bump the package version
+        id: model_version
+        run: |
+          poetry version minor
+          PACKAGE_VERSION=$(poetry version --short)
+          echo "model_version=${PACKAGE_VERSION}" >> $GITHUB_OUTPUT
+
       - name: Package the generated files as a Python package
         run: |
           poetry build
@@ -61,3 +68,12 @@ jobs:
           export TWINE_PASSWORD=`aws codeartifact get-authorization-token --domain revibe-energy --query authorizationToken --output text`
           export TWINE_REPOSITORY_URL=`aws codeartifact get-repository-endpoint --domain revibe-energy --repository revibe-repo --format pypi --query repositoryEndpoint --output text`
           twine upload --repository revibe-repo ./dist/*
+
+      - name: Commit updated project version
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add pyproject.toml
+          git commit pyproject.toml -m "Bump version to ${{steps.model_version.outputs.model_version}}"
+        working-directory: ${{ env.working-directory }}./greengrass-components/
+
