@@ -76,4 +76,3 @@ jobs:
           git add pyproject.toml
           git commit pyproject.toml -m "Bump version to ${{steps.model_version.outputs.model_version}}"
           git pull --rebase && git push
-
