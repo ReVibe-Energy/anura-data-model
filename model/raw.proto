@@ -14,6 +14,6 @@ message RawAccelerationData {
 
 message ScheduledRawMeasurement {
   Origin origin = 1;
-  Snapshot snapshot = 2;
+  string snapshot_id = 2;
   RawAccelerationData acceleration_data = 3;
 }

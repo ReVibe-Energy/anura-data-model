@@ -15,7 +15,7 @@ enum ThresholdDirection {
 
 message SingleAxisThresholdEvent {
   Origin origin = 1;
-  Snapshot snapshot = 2;
+  string snapshot_id = 2;
   Axis axis = 3;
   float threshold = 4;
   ThresholdDirection direction = 5;
@@ -24,7 +24,7 @@ message SingleAxisThresholdEvent {
 
 message PlaneThresholdEvent {
   Origin origin = 1;
-  Snapshot snapshot = 2;
+  string snapshot_id = 2;
   Plane plane = 3;
   float threshold = 4;
   ThresholdDirection direction = 5;

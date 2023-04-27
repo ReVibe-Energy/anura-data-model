@@ -24,7 +24,3 @@ message Origin {
   google.protobuf.Timestamp timestamp = 3;
   bool is_synced = 4;
 }
-
-message Snapshot {
-  string id = 1;
-}
