@@ -75,3 +75,4 @@ jobs:
           git config user.email github-actions@github.com
           git add pyproject.toml
           git commit pyproject.toml -m "Bump version to ${{steps.model_version.outputs.model_version}}"
+
