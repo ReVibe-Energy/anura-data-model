@@ -6,37 +6,29 @@ import "commons.proto";
 import "google/protobuf/timestamp.proto";
 
 message SensorData {
-  string gateway_id = 1;
-  string node_mac_address = 2;
-  google.protobuf.Timestamp timestamp = 3;
-  int32 is_synced = 4;
-  int32 active_values = 5;
-  SensorValue acc_rms = 6;
-  SensorValue acc_max = 7;
-  SensorValue vel_rms = 8;
-  SensorValue vel_max = 9;
-  SensorValue stroke = 10;
-  Stroke stroke_a = 11;
-  Stroke stroke_b = 12;
-  SensorValue peak_freq = 13;
-  SensorValue uniaxial_stroke = 14; //TODO: Should we keep this and remove 'stroke'?
-  SensorValue crest_factor = 15;
-  string receiver = 16;
+  AxialSensorValue acc_rms = 1;
+  AxialSensorValue acc_max = 2;
+  AxialSensorValue vel_rms = 3;
+  AxialSensorValue vel_max = 4;
+  AxialSensorValue stroke = 5;
+  PlanarSensorValue planar_stroke_resultant = 6;
+  PlanarSensorValue planar_stroke_maximum = 7;
+  AxialSensorValue peak_freq = 8;
+  AxialSensorValue crest_factor = 9;
 }
 
-message SensorValue {
-  double x = 1;
-  double y = 2;
-  double z = 3;
+message AxialSensorValue {
+  optional double x = 1;
+  optional double y = 2;
+  optional double z = 3;
 }
-message Stroke {
-  double xy = 1;
-  double yz = 2;
-  double xz = 3;
+message PlanarSensorValue {
+  optional double xy = 1;
+  optional double yz = 2;
+  optional double xz = 3;
 }
 
 message AggregatedMeasurement {
   Origin origin = 1;
-  string snapshot_id = 2;
-  SensorData aggregated_values = 3;
+  SensorData aggregated_values = 2;
 }
