@@ -3,11 +3,12 @@ syntax = "proto3";
 package model;
 
 import "commons.proto";
+import "google/protobuf/timestamp.proto";
 
 message SensorData {
   string gateway_id = 1;
   string node_mac_address = 2;
-  int64 timestamp = 3;
+  google.protobuf.Timestamp timestamp = 3;
   int32 is_synced = 4;
   int32 active_values = 5;
   SensorValue acc_rms = 6;
