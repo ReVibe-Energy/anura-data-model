@@ -19,8 +19,9 @@ message SensorData {
   Stroke stroke_a = 11;
   Stroke stroke_b = 12;
   SensorValue peak_freq = 13;
-  SensorValue uniaxial_stroke = 14;
-  string receiver = 15;
+  SensorValue uniaxial_stroke = 14; //TODO: Should we keep this and remove 'stroke'?
+  SensorValue crest_factor = 15;
+  string receiver = 16;
 }
 
 message SensorValue {
