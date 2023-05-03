@@ -42,10 +42,22 @@ jobs:
         run: |
           pip install -r requirements.txt
 
+      - name: Install Python tests dependencies
+        run: |
+          pip install -r tests/requirements.txt
+
       - name: Install buf tooling
         uses: bufbuild/buf-setup-action@v1.17.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate Python implementation for tests
+        run: |
+          buf generate
+        working-directory: ${{ env.working-directory }}./tests
+
+      - name: Run Pytest
+        run: python3 -m pytest
 
       - name: Generate Python implementation
         run: |

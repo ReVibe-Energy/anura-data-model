@@ -1,0 +1,8 @@
+version: v1
+
+managed:
+  enabled: true
+
+plugins:
+  - plugin: python_betterproto
+    out: generated/proto/

@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message TheTestMessage {
+  int32 a_normal_field = 1;
+  optional int32 an_optional_field = 2;
+}

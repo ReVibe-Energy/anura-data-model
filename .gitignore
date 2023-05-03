@@ -1,3 +1,4 @@
 dist/
 anuradatamodel/
 venv-anura/
+tests/generated/
