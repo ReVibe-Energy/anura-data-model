@@ -27,3 +27,12 @@ def test_serialization_with_only_optional_field():
     assert deserialized.a_normal_field == 0
     assert deserialized.an_optional_field is not None
     assert deserialized.an_optional_field == 22
+
+
+def test_serialization_with_default_value():
+    message = TheTestMessage(a_normal_field=0)
+    serialized = bytes(message)
+    assert serialized == b''
+    deserialized = TheTestMessage().parse(serialized)
+    assert deserialized.a_normal_field == 0
+    assert deserialized.an_optional_field is None
