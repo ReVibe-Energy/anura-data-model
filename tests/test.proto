@@ -4,3 +4,13 @@ message TheTestMessage {
   int32 a_normal_field = 1;
   optional int32 an_optional_field = 2;
 }
+
+message Root {
+  optional Node optional_node = 1;
+  Node node = 2;
+}
+
+message Node {
+  int32 a_normal_field = 1;
+  optional int32 an_optional_field = 2;
+}
