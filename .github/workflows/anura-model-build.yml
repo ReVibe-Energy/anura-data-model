@@ -43,7 +43,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Install buf tooling
-        uses: bufbuild/buf-setup-action@v1.17.0
+        uses: bufbuild/buf-setup-action@v1.18.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
