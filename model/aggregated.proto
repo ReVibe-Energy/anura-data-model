@@ -5,7 +5,7 @@ package model;
 import "commons.proto";
 import "google/protobuf/timestamp.proto";
 
-message SensorData {
+message AggregatedAccelerationData {
   AxialSensorValue acc_rms = 1;
   AxialSensorValue acc_max = 2;
   AxialSensorValue vel_rms = 3;
@@ -30,5 +30,5 @@ message PlanarSensorValue {
 
 message AggregatedMeasurement {
   Origin origin = 1;
-  SensorData aggregated_values = 2;
+  AggregatedAccelerationData aggregated_values = 2;
 }
