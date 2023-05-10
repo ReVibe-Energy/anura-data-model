@@ -3,59 +3,32 @@ syntax = "proto3";
 package model;
 
 import "commons.proto";
+import "google/protobuf/timestamp.proto";
 
-// TODO define values
-// TODO decide: split into groups e.g. RMS, FFT, ...
-
-message AggregatedValues {
-  float acceleration_x_peak = 1;
-  float acceleration_y_peak = 2;
-  float acceleration_z_peak = 3;
-  float acceleration_x_rms = 4;
-  float acceleration_y_rms = 5;
-  float acceleration_z_rms = 6;
+message AggregatedAccelerationData {
+  AxialSensorValue acc_rms = 1;
+  AxialSensorValue acc_max = 2;
+  AxialSensorValue vel_rms = 3;
+  AxialSensorValue vel_max = 4;
+  AxialSensorValue stroke = 5;
+  PlanarSensorValue planar_stroke_resultant = 6;
+  PlanarSensorValue planar_stroke_maximum = 7;
+  AxialSensorValue peak_freq = 8;
+  AxialSensorValue crest_factor = 9;
 }
 
-// vs
-
-message AccelerationPeak {
-  float x = 1;
-  float y = 2;
-  float z = 3;
+message AxialSensorValue {
+  optional double x = 1;
+  optional double y = 2;
+  optional double z = 3;
 }
-
-message AccelerationRms {
-  float x = 1;
-  float y = 2;
-  float z = 3;
+message PlanarSensorValue {
+  optional double xy = 1;
+  optional double yz = 2;
+  optional double xz = 3;
 }
-
-// vs
-
-message AxisAccelerations {
-  string unit = 4;
-  float x = 1;
-  float y = 2;
-  float z = 3;
-}
-
-// with usage
-//  AxisAccelerations acc_peaks
-//  AxisAccelerations acc_rms
-
-//
-
-message Values {
-  string unit = 4;
-  float x = 1;
-  float y = 2;
-  float z = 3;
-}
-
-//
 
 message AggregatedMeasurement {
   Origin origin = 1;
-  Snapshot snapshot = 2;
-  AggregatedValues aggregated_values = 3;
+  AggregatedAccelerationData aggregated_values = 2;
 }

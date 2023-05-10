@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
-      contents: read
+      contents: write # Needed to commit updated version
 
     steps:
       - name: Checkout
@@ -42,14 +42,33 @@ jobs:
         run: |
           pip install -r requirements.txt
 
+      - name: Install Python tests dependencies
+        run: |
+          pip install -r tests/requirements.txt
+
       - name: Install buf tooling
         uses: bufbuild/buf-setup-action@v1.18.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Generate Python implementation for tests
+        run: |
+          buf generate
+        working-directory: ${{ env.working-directory }}./tests
+
+      - name: Run Pytest
+        run: python3 -m pytest
+
       - name: Generate Python implementation
         run: |
           buf generate model
+
+      - name: Bump the package version
+        id: model_version
+        run: |
+          poetry version minor
+          PACKAGE_VERSION=$(poetry version --short)
+          echo "model_version=${PACKAGE_VERSION}" >> $GITHUB_OUTPUT
 
       - name: Package the generated files as a Python package
         run: |
@@ -61,3 +80,11 @@ jobs:
           export TWINE_PASSWORD=`aws codeartifact get-authorization-token --domain revibe-energy --query authorizationToken --output text`
           export TWINE_REPOSITORY_URL=`aws codeartifact get-repository-endpoint --domain revibe-energy --repository revibe-repo --format pypi --query repositoryEndpoint --output text`
           twine upload --repository revibe-repo ./dist/*
+
+      - name: Commit updated project version
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add pyproject.toml
+          git commit pyproject.toml -m "Bump version to ${{steps.model_version.outputs.model_version}}"
+          git pull --rebase && git push

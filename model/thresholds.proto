@@ -5,31 +5,31 @@ package model;
 import "commons.proto";
 import "raw.proto";
 
-enum ThresholdDirection {
-  THRESHOLD_DIRECTION_UNSPECIFIED = 0;
-  THRESHOLD_DIRECTION_RISING_EDGE = 1;
-  THRESHOLD_DIRECTION_FALLING_EDGE = 2;
-}
+// enum ThresholdDirection {
+//   THRESHOLD_DIRECTION_UNSPECIFIED = 0;
+//   THRESHOLD_DIRECTION_RISING_EDGE = 1;
+//   THRESHOLD_DIRECTION_FALLING_EDGE = 2;
+// }
 
-// TODO validate: combine / grouping
+// // TODO validate: combine / grouping
 
-message SingleAxisThresholdEvent {
-  Origin origin = 1;
-  Snapshot snapshot = 2;
-  Axis axis = 3;
-  float threshold = 4;
-  ThresholdDirection direction = 5;
-  RawAccelerationData acceleration_data = 6;
-}
+// message SingleAxisThresholdEvent {
+//   Origin origin = 1;
+//   string snapshot_id = 2;
+//   Axis axis = 3;
+//   float threshold = 4;
+//   ThresholdDirection direction = 5;
+//   RawAccelerationData acceleration_data = 6;
+// }
 
-message PlaneThresholdEvent {
-  Origin origin = 1;
-  Snapshot snapshot = 2;
-  Plane plane = 3;
-  float threshold = 4;
-  ThresholdDirection direction = 5;
-  RawAccelerationData acceleration_data = 6;
-}
+// message PlaneThresholdEvent {
+//   Origin origin = 1;
+//   string snapshot_id = 2;
+//   Plane plane = 3;
+//   float threshold = 4;
+//   ThresholdDirection direction = 5;
+//   RawAccelerationData acceleration_data = 6;
+// }
 
 
 // idea
