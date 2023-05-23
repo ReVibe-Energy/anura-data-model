@@ -84,7 +84,7 @@ jobs:
       - name: Commit updated project version
         run: |
           git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.email github-actions@revibeenergy.com
           git add pyproject.toml
           git commit pyproject.toml -m "Bump version to ${{steps.model_version.outputs.model_version}}"
           git pull --rebase && git push
