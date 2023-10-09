@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package model;
+
+import "commons.proto";
+
+message HealthData {
+  uint32 voltage_level = 1;
+  sint32 signal_strength = 2;
+  sint32 temperature = 3;
+  optional int32 battery_level = 4;
+
+}
+
+message Health {
+  Origin origin = 1;
+  HealthData health_data = 2;
+}
