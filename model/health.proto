@@ -4,15 +4,18 @@ package model;
 
 import "commons.proto";
 
-message HealthData {
-  uint32 voltage_level = 1;
-  sint32 signal_strength = 2;
-  sint32 temperature = 3;
-  optional int32 battery_level = 4;
+message NodeHealthData {
+  uint32 capacitor_voltage_level_mv = 1;
+  sint32 signal_strength_dbm = 2;
+  optional int32 battery_level_mv = 3;
+}
 
+message GatewayHealthData {
+  optional sint32 temperature = 1;
 }
 
 message Health {
   Origin origin = 1;
-  HealthData health_data = 2;
+  GatewayHealthData gw_health_data = 2;
+  repeated NodeHealthData node_health_data = 3;
 }
