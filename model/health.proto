@@ -5,8 +5,8 @@ package model;
 import "commons.proto";
 
 message NodeHealthData {
-  uint32 capacitor_voltage_level_mv = 1;
-  sint32 signal_strength_dbm = 2;
+  optional uint32 storage_voltage_level_mv = 1;
+  optional sint32 signal_strength_dbm = 2;
   optional int32 battery_level_mv = 3;
 }
 
