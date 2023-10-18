@@ -14,6 +14,6 @@ message NodeOrigin {
 
 message GatewayOrigin {
   string gateway_id = 1;
-  google.protobuf.Timestamp timestamp = 3;
-  string snapshot_id = 5;
+  google.protobuf.Timestamp timestamp = 2;
+  string snapshot_id = 3;
 }
