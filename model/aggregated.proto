@@ -29,6 +29,6 @@ message PlanarSensorValue {
 }
 
 message AggregatedMeasurement {
-  Origin origin = 1;
+  NodeOrigin origin = 1;
   AggregatedAccelerationData aggregated_values = 2;
 }

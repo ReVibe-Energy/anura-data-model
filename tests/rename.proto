@@ -1,10 +1,8 @@
 syntax = "proto3";
 
-package model;
-
 import "google/protobuf/timestamp.proto";
 
-message NodeOrigin {
+message Origin {
   string gateway_id = 1;
   string node_id = 2;
   google.protobuf.Timestamp timestamp = 3;
@@ -12,8 +10,10 @@ message NodeOrigin {
   string snapshot_id = 5;
 }
 
-message GatewayOrigin {
+message RenamedOrigin {
   string gateway_id = 1;
+  string node_id = 2;
   google.protobuf.Timestamp timestamp = 3;
+  bool is_synced = 4;
   string snapshot_id = 5;
 }

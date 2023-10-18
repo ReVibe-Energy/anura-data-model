@@ -13,6 +13,6 @@ message RawAccelerationData {
 }
 
 message ScheduledRawMeasurement {
-  Origin origin = 1;
+  NodeOrigin origin = 1;
   RawAccelerationData acceleration_data = 2;
 }
