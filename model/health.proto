@@ -8,6 +8,10 @@ message NodeHealthData {
   NodeOrigin origin = 1;
   optional uint32 storage_voltage_mv = 2;
   optional sint32 signal_strength_dbm = 3;
+  optional sint32 temperature = 4;
+  optional sint32 runtime_ms = 5;
+  optional uint32 time_since_reboot_ms = 6;
+  map <string, string> debug_info = 7;
 }
 
 message GatewayHealthData {
