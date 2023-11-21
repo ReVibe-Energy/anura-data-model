@@ -16,4 +16,5 @@ message NodeHealthData {
 message GatewayHealthData {
   GatewayOrigin origin = 1;
   optional sint32 temperature = 2;
+  optional uint32 db_size_bytes = 3;
 }
