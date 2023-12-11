@@ -6,15 +6,15 @@ import "commons.proto";
 
 message NodeHealthData {
   NodeOrigin origin = 1;
-  optional uint32 storage_voltage_mv = 2;
+  optional uint32 storage_voltage= 2;
   optional sint32 signal_strength_dbm = 3;
-  optional float temperature = 4;
+  optional float temperature = 4; // Temperature in Celsius
   optional uint64 uptime_ms = 5;
   map <string, string> debug_info = 6;
 }
 
 message GatewayHealthData {
   GatewayOrigin origin = 1;
-  optional sint32 temperature = 2;
-  optional uint32 db_size_bytes = 3;
+  optional sint32 temperature = 2; // Temperature in Celsius
+  optional uint32 db_size_bytes = 3; // Size occupied for buffering of data in case of no connectivity
 }
