@@ -13,7 +13,7 @@ message NodeHealthData {
   optional uint64 uptime_ms = 6;
   optional uint64 reboot_count = 7; // Number of times the node has been rebooted
   optional uint64 reset_cause = 8;
-  optional uint64 clock_sync_skew = 9;
+  optional float clock_sync_skew = 9;
   optional uint64 clock_sync_age = 10;
   optional uint64 clock_sync_diff = 11;
   map <string, string> debug_info = 12;
