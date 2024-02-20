@@ -12,6 +12,13 @@ message NodeOrigin {
   string snapshot_id = 5;
 }
 
+message TransceiverOrigin {
+  string gateway_id = 1;
+  string transceiver_id = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  string snapshot_id = 4;
+}
+
 message GatewayOrigin {
   string gateway_id = 1;
   google.protobuf.Timestamp timestamp = 2;
