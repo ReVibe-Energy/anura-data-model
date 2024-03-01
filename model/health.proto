@@ -18,7 +18,7 @@ message NodeHealthData {
 message TransceiverHealthData {
   TransceiverOrigin origin = 1;
   map <string, string> debug_info = 2;
-  optional sint32 temperature = 3; // Temperature in Celsius
+  optional float temperature = 3; // Temperature in Celsius
   optional uint64 uptime_ms = 4;
   optional bool connected = 5;
 }
@@ -26,6 +26,6 @@ message TransceiverHealthData {
 message GatewayHealthData {
   GatewayOrigin origin = 1;
   map <string, string> debug_info = 2;
-  optional sint32 temperature = 3; // Temperature in Celsius
+  optional float temperature = 3; // Temperature in Celsius
   optional uint32 buffer_size_bytes = 4; // Size occupied for buffering of data in case of no connectivity
 }
