@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "anura-data-model"
-version = "2.62.0"
+version = "2.64.0"
 description = "Data model for Anura Protobuf format"
 authors = ["Erik Finnman <erik.finnman@layer10.se>"]
 readme = "README.md"
