@@ -12,7 +12,27 @@ message RawAccelerationData {
   repeated float acceleration_z = 5;
 }
 
+/*
+Format containing the unscaled data from sensor.
+
+This is a more compact format since protobuf has no built-in
+type for half-precision (16-bit) floats.
+ */
+message RawAccelerationDataCompact {
+  float sample_rate = 1;
+  uint32 sample_count = 2;
+  uint32 range = 3;
+  repeated bytes acceleration_x = 4;
+  repeated bytes acceleration_y = 5;
+  repeated bytes acceleration_z = 6;
+}
+
 message ScheduledRawMeasurement {
   NodeOrigin origin = 1;
   RawAccelerationData acceleration_data = 2;
+}
+
+message ScheduledRawMeasurementCompact {
+  NodeOrigin origin = 1;
+  RawAccelerationDataCompact acceleration_data = 2;
 }
