@@ -23,7 +23,7 @@ Formula for conversion:
 acceleration_g = 2 * range * acceleration_<x/y/z> / 2^16
  */
 message RawAccelerationDataCompact {
-  float sample_rate = 1;
+  float sample_rate_hz = 1;
   uint32 sample_count = 2;
   uint32 range = 3;
   repeated bytes acceleration_x = 4;
