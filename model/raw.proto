@@ -5,11 +5,11 @@ package model;
 import "commons.proto";
 
 message RawAccelerationData {
-  float sample_rate = 1;
+  float sample_rate_hz = 1;
   uint32 sample_count = 2;
-  repeated float acceleration_x = 3;
-  repeated float acceleration_y = 4;
-  repeated float acceleration_z = 5;
+  repeated float acceleration_x_g = 3;
+  repeated float acceleration_y_g = 4;
+  repeated float acceleration_z_g = 5;
 }
 
 /*
