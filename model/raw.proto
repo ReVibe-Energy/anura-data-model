@@ -17,6 +17,10 @@ Format containing the unscaled data from the sensor.
 
 This is a more compact format since protobuf has no built-in
 type for half-precision (16-bit) floats.
+
+Formula for conversion:
+
+acceleration_g = 2 * range * acceleration_<x/y/z> / 2^16
  */
 message RawAccelerationDataCompact {
   float sample_rate = 1;
