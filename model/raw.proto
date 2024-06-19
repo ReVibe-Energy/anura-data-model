@@ -18,6 +18,8 @@ Format containing the unscaled data from the sensor.
 This is a more compact format since protobuf has no built-in
 type for half-precision (16-bit) floats.
 
+The data is in little-endian.
+
 Formula for conversion:
 
 acceleration_g = 2 * range * acceleration_<x/y/z> / 2^16
@@ -26,9 +28,10 @@ message RawAccelerationDataCompact {
   float sample_rate_hz = 1;
   uint32 sample_count = 2;
   uint32 range = 3;
-  repeated bytes acceleration_x = 4;
-  repeated bytes acceleration_y = 5;
-  repeated bytes acceleration_z = 6;
+  // Acceleration values contain 2 * sample_count bytes
+  bytes acceleration_x = 4;
+  bytes acceleration_y = 5;
+  bytes acceleration_z = 6;
 }
 
 message ScheduledRawMeasurement {
