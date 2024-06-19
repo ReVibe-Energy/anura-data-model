@@ -15,10 +15,7 @@ message RawAccelerationData {
 /*
 Format containing the unscaled data from the sensor.
 
-This is a more compact format since protobuf has no built-in
-type for half-precision (16-bit) floats.
-
-The data is in little-endian.
+The data is a packed array of 16-bit little endian signed integers (two's complement).
 
 Formula for conversion:
 
