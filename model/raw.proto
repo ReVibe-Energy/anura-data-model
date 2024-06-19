@@ -13,21 +13,23 @@ message RawAccelerationData {
 }
 
 /*
-Format containing the unscaled data from the sensor.
-
-The data is a packed array of 16-bit little endian signed integers (two's complement).
-
-Formula for conversion:
-
-acceleration_g = 2 * range * acceleration_<x/y/z> / 2^16
+* Format containing the unscaled data from the sensor.
+*
+* Acceleration values contain 2 * sample_count bytes.
+*
+* Formula for conversion:
+*
+* acceleration_g = 2 * range * acceleration_<x/y/z> / 2^16
  */
 message RawAccelerationDataCompact {
   float sample_rate_hz = 1;
   uint32 sample_count = 2;
   uint32 range = 3;
-  // Acceleration values contain 2 * sample_count bytes
+  // Packed array of 16-bit little endian signed integers (two's complement).
   bytes acceleration_x = 4;
+  // Packed array of 16-bit little endian signed integers (two's complement).
   bytes acceleration_y = 5;
+  // Packed array of 16-bit little endian signed integers (two's complement).
   bytes acceleration_z = 6;
 }
 
