@@ -5,14 +5,40 @@ package model;
 import "commons.proto";
 
 message RawAccelerationData {
-  float sample_rate = 1;
+  float sample_rate_hz = 1;
   uint32 sample_count = 2;
-  repeated float acceleration_x = 3;
-  repeated float acceleration_y = 4;
-  repeated float acceleration_z = 5;
+  repeated float acceleration_x_g = 3;
+  repeated float acceleration_y_g = 4;
+  repeated float acceleration_z_g = 5;
+}
+
+/*
+* Format containing the unscaled data from the sensor.
+*
+* Acceleration values contain 2 * sample_count bytes.
+*
+* Formula for conversion:
+*
+* acceleration_g = 2 * range * acceleration_<x/y/z> / 2^16
+ */
+message RawAccelerationDataCompact {
+  float sample_rate_hz = 1;
+  uint32 sample_count = 2;
+  uint32 range = 3;
+  // Packed array of 16-bit little endian signed integers (two's complement).
+  bytes acceleration_x = 4;
+  // Packed array of 16-bit little endian signed integers (two's complement).
+  bytes acceleration_y = 5;
+  // Packed array of 16-bit little endian signed integers (two's complement).
+  bytes acceleration_z = 6;
 }
 
 message ScheduledRawMeasurement {
   NodeOrigin origin = 1;
   RawAccelerationData acceleration_data = 2;
+}
+
+message ScheduledRawMeasurementCompact {
+  NodeOrigin origin = 1;
+  RawAccelerationDataCompact acceleration_data = 2;
 }
